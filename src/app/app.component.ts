@@ -39,28 +39,25 @@ export class AppComponent implements AfterViewInit{
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.setClearColor(0xcccccc); // Set the background color to light grey
+    this.renderer.setClearColor(0xcccccc);
     this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
 
-    // Initialize OrbitControls
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.controls.enableDamping = true; // Enable damping (inertia)
-    this.controls.dampingFactor = 0.08; // Damping factor
-    this.controls.rotateSpeed = 0.7; // Rotate speed
-    this.controls.zoomSpeed = 0.7; // Zoom speed
-    this.controls.panSpeed = 0.5; // Pan speed
+    this.controls.enableDamping = true;
+    this.controls.dampingFactor = 0.08;
+    this.controls.rotateSpeed = 0.7;
+    this.controls.zoomSpeed = 0.7;
+    this.controls.panSpeed = 0.5;
     this.controls.screenSpacePanning = false;
     this.controls.minDistance = 10;
     this.controls.maxDistance = 500;
 
-    // Create and add the directional light to the camera
-    this.light = new THREE.DirectionalLight(0xffffff, 1.8); // Slightly reduced intensity
+    this.light = new THREE.DirectionalLight(0xffffff, 1.8);
     this.camera.add(this.light);
     this.camera.add(this.light.target);
     this.scene.add(this.camera);
 
-    // Add an ambient light for general illumination
-    this.ambientLight = new THREE.AmbientLight(0xffffff, 0.9); // Slightly reduced intensity
+    this.ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
     this.scene.add(this.ambientLight);
 
     this.material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
@@ -93,19 +90,19 @@ export class AppComponent implements AfterViewInit{
 
   loadSTL(data: ArrayBuffer): void {
     const geometry = this.loader.parse(data);
-    geometry.center(); // Centre le modèle géométriquement
+    geometry.center();
     if (this.mesh) {
       this.scene.remove(this.mesh);
     }
     this.mesh = new THREE.Mesh(geometry, this.material);
     this.scene.add(this.mesh);
-    this.renderScene(); // Render the scene once the model is loaded
+    this.renderScene();
   }
 
   changeColor(event: any): void {
     const color = event.target.value;
     this.material.color.set(color);
-    this.renderScene(); // Render the scene after color change
+    this.renderScene();
   }
 
   renderScene(): void {
