@@ -2,13 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4.
 
-## Development server
+## Setup the project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Install the last long term support version of [NodeJs](https://nodejs.org/en/download/package-manager).
+- Install [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4 with `npm i -g @angular/cli` for global use or with `npm i @angular/cli` for local project use.
+- Run `npm i` to install all project dependencies
 
-## Build
+## Run to your local development server
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+The application will automatically reload if you change any of the source files.
 
 # Have fun
 
